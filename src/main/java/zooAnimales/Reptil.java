@@ -1,72 +1,69 @@
 package zooAnimales;
-
 import java.util.ArrayList;
 
-import gestion.Zona;
-
 public class Reptil extends Animal {
-	
-	private ArrayList<Pez> listado;
-	public int iguanas;
-	public int serpientes;
-	private String colorEscamas;
-	private int largoCola;
-	
-	public ArrayList<Pez>  getListado() {
-		return listado;
+private static ArrayList<Reptil> listado = new ArrayList<>();
+public static int iguanas;
+public static int serpientes;
+private String colorEscamas;
+private int largoCola;
+
+
+public Reptil() {
+	this(null, 0, null, null, null, 0);
+}
+public Reptil(String nombre, int edad, String habitat, String genero, String colorEscamas, int largoCola) {
+	super(nombre, edad, habitat, genero);
+	this.colorEscamas = colorEscamas;
+	this.largoCola = largoCola;
+	Reptil.listado.add(this);
+}
+
+
+public static void setListado(ArrayList<Reptil> listado) {
+	Reptil.listado = listado;
+}
+public static ArrayList<Reptil> getListado() {
+	return listado;
+}
+
+
+public void setColorEscamas(String colorEscamas) {
+	this.colorEscamas = colorEscamas;
+}
+public String getColorEscamas() {
+	return colorEscamas;
+}
+
+
+public void setLargoCola(int largoCola) {
+	this.largoCola = largoCola;
+}
+public int getLargoCola() {
+	return largoCola;
+}
+
+
+public int cantidadReptiles() {
+	return Reptil.listado.size();
 	}
 
-	public void setListado(ArrayList<Pez> listado) {
-		this.listado = listado;
-	}
 
-	public String getColorEscamas() {
-		return colorEscamas;
-	}
+public String movimiento() {
+	return "reptar";
+}
 
-	public void setColorEscamas(String colorEscamas) {
-		this.colorEscamas = colorEscamas;
-	}
 
-	public int getLargoCola() {
-		return largoCola;
-	}
+public static Reptil crearIguana(String nombre, int edad, String genero) {
+	Reptil Reptil = new Reptil(nombre, edad, "humedal", genero, "verde", 3);
+	iguanas++;
+	return Reptil;
+}
 
-	public void setLargoCola(int largoCola) {
-		this.largoCola = largoCola;
-	}
 
-	public Reptil() {
-		super();
-	}
-	
-	public Reptil(int totalAnimales, String nombre, int edad, String habitad, String genero, Zona zona,
-			Reptil[] listado, int iguanas, int serpientes, String colorEscamas, int largoCola) {
-		super(totalAnimales, nombre, edad, habitad, genero, zona);
-		
-		this.listado = listado;
-		this.iguanas = iguanas;
-		this.serpientes = serpientes;
-		this.colorEscamas = colorEscamas;
-		this.largoCola = largoCola;
-	}
-	
-	public void cantidadReptiles() {
-		
-	}
-	
-	@Override
-	public void movimiento() {
-		
-	}
-	
-	public void crearIguana() {
-		
-	}
-	
-	public void crearSerpiente() {
-			
-		}
-	
-	
+public static Reptil crearSerpiente(String nombre, int edad, String genero) {
+	Reptil Reptil = new Reptil(nombre, edad, "jungla", genero, "blanco", 1);
+	serpientes++;
+	return Reptil;
+}
 }
